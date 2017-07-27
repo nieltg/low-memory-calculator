@@ -3,5 +3,5 @@ add_executable (
   lmcalc
 
   # Sources
-  calculator.c
+  main.c
 )
