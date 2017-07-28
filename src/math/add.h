@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <stdio.h>
+
 #include <misc/logic.h>
 
 /* Bit adder. */
@@ -42,7 +44,9 @@
         _MATH_ADD_UNIT2_STMT(rega,regb,k,l,0,carry_stmt0,carry_stmt1), \
         _MATH_ADD_UNIT2_STMT(rega,regb,k,l,1,carry_stmt0,carry_stmt1))
 
-#define MATH_ADD(rega,regb) \
+#define MATH_ADD_STMT(rega,regb) \
     _MATH_ADD_UNIT4_STMT(rega,regb,1,2,3,4,0, \
-        _MATH_ADD_UNIT4_STMT(rega,regb,5,6,7,8,0,,), \
-        _MATH_ADD_UNIT4_STMT(rega,regb,5,6,7,8,1,,))
+        _MATH_ADD_UNIT4_STMT(rega,regb,5,6,7,8,0,, \
+            printf ("math/add: warning: Overflow!\n")), \
+        _MATH_ADD_UNIT4_STMT(rega,regb,5,6,7,8,1,, \
+            printf ("math/add: warning: Overflow!\n")))
