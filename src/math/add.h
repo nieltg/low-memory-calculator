@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-#include <misc/logic.h>
+#include "../misc/logic.h"
 
 /* Bit adder. */
 
