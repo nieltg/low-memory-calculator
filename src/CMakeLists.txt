@@ -4,4 +4,5 @@ add_executable (
 
   # Sources
   main.c
+  math.c
 )
