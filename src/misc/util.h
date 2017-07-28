@@ -7,7 +7,7 @@
 /* Bit manipulation. */
 
 #define _UTIL_SET_STMT(rega,i,regb,j) \
-    (rega).bit##i = (regb).bit##j
+    (regb).bit##j = (rega).bit##i
 
 #define _UTIL_SET_ZERO_STMT(rega,i) \
     (rega).bit##i = 0

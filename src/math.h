@@ -5,6 +5,7 @@
 #pragma once
 
 #include "math/add.h"
+#include "math/mul.h"
 
 /* Add. */
 
@@ -13,3 +14,11 @@
 
 void MATH_ADD(reg1,reg2);
 void MATH_ADD(reg1,reg3);
+
+/* Multiply. */
+
+#define MATH_MUL(rega,regb) \
+    math_mul_##rega##_##regb ()
+
+void MATH_MUL(reg1,reg2);
+void MATH_MUL(reg1,reg3);
