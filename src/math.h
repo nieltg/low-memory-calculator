@@ -34,6 +34,13 @@
 
 _MATH_DEFINE2_DECL(MATH_ADD);
 
+/* Substract. */
+
+#define MATH_SUB(rega,regb,regt1) \
+    math_sub_##rega##_##regb##_##regt1 ()
+
+_MATH_DEFINE3_DECL(MATH_SUB);
+
 /* Multiply. */
 
 #define MATH_MUL(rega,regb) \
