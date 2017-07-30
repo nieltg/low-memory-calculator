@@ -3,6 +3,7 @@
 
 #include "../src/main.h"
 #include "../src/math.h"
+#include "../src/math/add.h"
 #include "../src/misc/util.h"
 
 /* Environment. */
@@ -12,9 +13,7 @@ reg reg2;
 reg reg3;
 reg reg4;
 
-void MATH_ADD(reg1,reg2) {
-    MATH_ADD_STMT(reg1,reg2);
-}
+MATH_IMPL(MATH_ADD,reg1,reg2);
 
 /* Test. */
 
