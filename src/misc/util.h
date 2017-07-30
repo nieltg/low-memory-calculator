@@ -9,10 +9,23 @@
 #define _UTIL_SET_STMT(rega,i,regb,j) \
     (regb).bit##j = (rega).bit##i
 
+#define _UTIL_SET_VAL_STMT(rega,i,a) \
+    (rega).bit##i = a
+
 #define _UTIL_SET_ZERO_STMT(rega,i) \
     (rega).bit##i = 0
 
 /* Byte manipulation. */
+
+#define UTIL_LOAD_BIN_STMT(rega,h,g,f,e,d,c,b,a) \
+    _UTIL_SET_VAL_STMT(rega,1,a); \
+    _UTIL_SET_VAL_STMT(rega,2,b); \
+    _UTIL_SET_VAL_STMT(rega,3,c); \
+    _UTIL_SET_VAL_STMT(rega,4,d); \
+    _UTIL_SET_VAL_STMT(rega,5,e); \
+    _UTIL_SET_VAL_STMT(rega,6,f); \
+    _UTIL_SET_VAL_STMT(rega,7,g); \
+    _UTIL_SET_VAL_STMT(rega,8,h)
 
 #define UTIL_MOVE_STMT(rega,regb) \
     _UTIL_SET_STMT(rega,1,regb,1); \
