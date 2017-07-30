@@ -34,19 +34,17 @@
 
 /* Byte adder. */
 
-#define _MATH_ADD_UNIT2_STMT(rega,regb,i,j,carry_const,carry_stmt0,carry_stmt1) \
-    _MATH_ADD_FULL_ADDER_STMT((rega).bit##i,(regb).bit##i,carry_const, \
-        _MATH_ADD_FULL_ADDER_STMT((rega).bit##j,(regb).bit##j,0,carry_stmt0,carry_stmt1), \
-        _MATH_ADD_FULL_ADDER_STMT((rega).bit##j,(regb).bit##j,1,carry_stmt0,carry_stmt1))
+#define _MATH_ADD_UNIT2_STMT(rega,regb_const,i,j,carry_const,carry_stmt0,carry_stmt1) \
+    _MATH_ADD_FULL_ADDER_STMT((rega).bit##i,(regb_const).bit##i,carry_const, \
+        _MATH_ADD_FULL_ADDER_STMT((rega).bit##j,(regb_const).bit##j,0,carry_stmt0,carry_stmt1), \
+        _MATH_ADD_FULL_ADDER_STMT((rega).bit##j,(regb_const).bit##j,1,carry_stmt0,carry_stmt1))
 
-#define _MATH_ADD_UNIT4_STMT(rega,regb,i,j,k,l,carry_const,carry_stmt0,carry_stmt1) \
-    _MATH_ADD_UNIT2_STMT(rega,regb,i,j,carry_const, \
-        _MATH_ADD_UNIT2_STMT(rega,regb,k,l,0,carry_stmt0,carry_stmt1), \
-        _MATH_ADD_UNIT2_STMT(rega,regb,k,l,1,carry_stmt0,carry_stmt1))
+#define _MATH_ADD_UNIT4_STMT(rega,regb_const,i,j,k,l,carry_const,carry_stmt0,carry_stmt1) \
+    _MATH_ADD_UNIT2_STMT(rega,regb_const,i,j,carry_const, \
+        _MATH_ADD_UNIT2_STMT(rega,regb_const,k,l,0,carry_stmt0,carry_stmt1), \
+        _MATH_ADD_UNIT2_STMT(rega,regb_const,k,l,1,carry_stmt0,carry_stmt1))
 
-#define MATH_ADD_STMT(rega,regb) \
-    _MATH_ADD_UNIT4_STMT(rega,regb,1,2,3,4,0, \
-        _MATH_ADD_UNIT4_STMT(rega,regb,5,6,7,8,0,, \
-            printf ("math/add: warning: Overflow!\n")), \
-        _MATH_ADD_UNIT4_STMT(rega,regb,5,6,7,8,1,, \
-            printf ("math/add: warning: Overflow!\n")))
+#define MATH_ADD_STMT(rega,regb_const) \
+    _MATH_ADD_UNIT4_STMT(rega,regb_const,1,2,3,4,0, \
+        _MATH_ADD_UNIT4_STMT(rega,regb_const,5,6,7,8,0,,), \
+        _MATH_ADD_UNIT4_STMT(rega,regb_const,5,6,7,8,1,,))
