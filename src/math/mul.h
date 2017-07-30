@@ -8,16 +8,15 @@
 
 #include "../math.h"
 #include "../misc/logic.h"
-#include "../misc/shift.h"
 #include "../misc/util.h"
 
 /* Byte multiplier. */
 
 #define _MATH_MUL_SINGLE_OP_STMT(rega,regb,c) \
+    MATH_ADD(rega,rega); \
     if (c) { \
         MATH_ADD(rega,regb); \
-    } \
-    SHIFT_LEFT1_STMT(regb); \
+    }
 
 #define _MATH_MUL_UNIT_STMT(rega,regb,i,bit_stmt0,bit_stmt1) \
     if ((regb).bit##i) { \
@@ -39,10 +38,10 @@
         _MATH_MUL_UNIT2_STMT(rega,regb,k,l,bit_stmt0,bit_stmt1))
 
 #define MATH_MUL_STMT(rega,regb) \
-    _MATH_MUL_UNIT4_STMT(rega,regb,8,7,6,5, \
-        _MATH_MUL_UNIT4_STMT(rega,regb,4,3,2,1, \
+    _MATH_MUL_UNIT4_STMT(rega,regb,1,2,3,4, \
+        _MATH_MUL_UNIT4_STMT(rega,regb,5,6,7,8, \
             UTIL_MOVE_ZERO_STMT(rega,regb), \
             UTIL_MOVE_ZERO_STMT(rega,regb)), \
-        _MATH_MUL_UNIT4_STMT(rega,regb,4,3,2,1, \
+        _MATH_MUL_UNIT4_STMT(rega,regb,5,6,7,8, \
             UTIL_MOVE_ZERO_STMT(rega,regb), \
             UTIL_MOVE_ZERO_STMT(rega,regb)))
