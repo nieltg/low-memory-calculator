@@ -13,3 +13,7 @@ add_test(test-mul test-mul)
 add_executable (test-pow
     test-pow.c)
 add_test(test-pow test-pow)
+
+add_executable (test-sqrt
+    test-sqrt.c)
+add_test(test-sqrt test-sqrt)
