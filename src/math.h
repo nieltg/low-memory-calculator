@@ -54,3 +54,10 @@ _MATH_DEFINE2_DECL(MATH_MUL);
     math_pow_##rega##_##regb##_##regt1 ()
 
 _MATH_DEFINE3_DECL(MATH_POW);
+
+/* Square root. */
+
+#define MATH_SQRT(rega) \
+    math_sqrt_##rega ()
+
+_MATH_DEFINE1_DECL(MATH_SQRT);
