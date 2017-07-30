@@ -17,6 +17,9 @@
 
 /* Byte manipulation. */
 
+#define UTIL_CAST_UCHAR(rega) \
+    *(unsigned char*)(&(rega))
+
 #define UTIL_LOAD_BIN_STMT(rega,h,g,f,e,d,c,b,a) \
     _UTIL_SET_VAL_STMT(rega,1,a); \
     _UTIL_SET_VAL_STMT(rega,2,b); \
