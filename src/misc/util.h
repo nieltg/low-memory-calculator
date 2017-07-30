@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "logic.h"
+
 /* Bit manipulation. */
 
 #define _UTIL_SET_STMT(rega,i,regb,j) \
@@ -53,3 +55,8 @@
 #define UTIL_MOVE_ZERO_STMT(rega,regb) \
     UTIL_MOVE_STMT(rega,regb); \
     UTIL_ZERO_STMT(rega)
+
+#define UTIL_SWAP_STMT(rega,regb) \
+    LOGIC_XOR_STMT(rega,regb); \
+    LOGIC_XOR_STMT(regb,rega); \
+    LOGIC_XOR_STMT(rega,regb)
