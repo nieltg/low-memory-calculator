@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 #include "main.h"
+#include "misc/util.h"
+#include "parse/expr.h"
 
 reg reg1;
 reg reg2;
@@ -18,8 +20,8 @@ int main (int argc, char* argv[]) {
         exit (1);
     }
 
-    while ((c = fgetc (file)) != EOF) {
-    }
+    EXPR_EVAL_STMT(file,c,reg1,reg2,reg3,reg4);
+    printf("%u\n", UTIL_CAST_UINT(reg1));
     
     return 0;
 }
