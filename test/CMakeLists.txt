@@ -10,6 +10,10 @@ add_executable (test-mul
     test-mul.c)
 add_test(test-mul test-mul)
 
+add_executable (test-div
+    test-div.c)
+add_test(test-div test-div)
+
 add_executable (test-pow
     test-pow.c)
 add_test(test-pow test-pow)
