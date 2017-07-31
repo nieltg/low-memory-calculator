@@ -55,7 +55,7 @@ int main (int argc, char** argv) {
 
         if (UTIL_CAST_UCHAR(reg1) != (unsigned char) val) {
             fprintf (stderr, "sqrt %u = %u, not %u\n", i, val,
-                UTIL_CAST_UCHAR(reg1));
+                UTIL_CAST_UINT(reg1));
             return EXIT_FAILURE;
         }
     }

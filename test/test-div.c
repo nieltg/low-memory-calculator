@@ -45,13 +45,13 @@ int main (int argc, char** argv) {
 
             if (UTIL_CAST_UCHAR(reg1) != (unsigned char) val1) {
                 fprintf (stderr, "%u %% %u = %u, not %u\n", i, j, val1,
-                    UTIL_CAST_UCHAR(reg1));
+                    UTIL_CAST_UINT(reg1));
                 return EXIT_FAILURE;
             }
 
             if (UTIL_CAST_UCHAR(reg2) != (unsigned char) val2) {
                 fprintf (stderr, "%u / %u = %u, not %u\n", i, j, val2,
-                    UTIL_CAST_UCHAR(reg2));
+                    UTIL_CAST_UINT(reg2));
                 return EXIT_FAILURE;
             }
         }
