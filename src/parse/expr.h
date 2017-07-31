@@ -58,11 +58,12 @@
         } else if (ch == '/') { \
             _EXPR_READ_EXPECT_STMT(file,ch); \
             _EXPR_EVAL2_STMT(file,ch,regt1,regt2,regt3); \
-            MATH_DIV(rega,regt1); \
+            MATH_DIV(rega,regt1,regt2,regt3); \
+            UTIL_MOVE_STMT(regt1,rega); \
         } else if (ch == '%') { \
             _EXPR_READ_EXPECT_STMT(file,ch); \
             _EXPR_EVAL2_STMT(file,ch,regt1,regt2,regt3); \
-            MATH_MOD(rega,regt1); \
+            MATH_DIV(rega,regt1,regt2,regt3); \
         } else { \
             printf ("%s:%u: Invalid character: %c\n", __FILE__, __LINE__, ch); \
             return -1; \
