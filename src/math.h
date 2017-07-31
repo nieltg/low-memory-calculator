@@ -27,6 +27,12 @@
     _MATH_DEFINE2_DECL(decl_name,reg3,##__VA_ARGS__); \
     _MATH_DEFINE2_DECL(decl_name,reg4,##__VA_ARGS__)
 
+#define _MATH_DEFINE4_DECL(decl_name,...) \
+    _MATH_DEFINE3_DECL(decl_name,reg1,##__VA_ARGS__); \
+    _MATH_DEFINE3_DECL(decl_name,reg2,##__VA_ARGS__); \
+    _MATH_DEFINE3_DECL(decl_name,reg3,##__VA_ARGS__); \
+    _MATH_DEFINE3_DECL(decl_name,reg4,##__VA_ARGS__)
+
 /* Add. */
 
 #define MATH_ADD(rega,regb) \
@@ -47,6 +53,13 @@ _MATH_DEFINE3_DECL(MATH_SUB);
     math_mul_##rega##_##regb ()
 
 _MATH_DEFINE2_DECL(MATH_MUL);
+
+/* Divide. */
+
+#define MATH_DIV(rega,regb,regt1,regt2) \
+    math_div_##rega##_##regb##_##regt1##_##regt2 ()
+
+_MATH_DEFINE4_DECL(MATH_DIV);
 
 /* Power. */
 
