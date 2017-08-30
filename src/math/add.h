@@ -44,7 +44,10 @@
         _MATH_ADD_UNIT2_STMT(rega,regb_const,k,l,0,carry_stmt0,carry_stmt1), \
         _MATH_ADD_UNIT2_STMT(rega,regb_const,k,l,1,carry_stmt0,carry_stmt1))
 
-#define MATH_ADD_STMT(rega,regb_const) \
+#define MATH_ADD_STMT_FULL(rega,regb_const,carry_stmt0,carry_stmt1) \
     _MATH_ADD_UNIT4_STMT(rega,regb_const,1,2,3,4,0, \
-        _MATH_ADD_UNIT4_STMT(rega,regb_const,5,6,7,8,0,,), \
-        _MATH_ADD_UNIT4_STMT(rega,regb_const,5,6,7,8,1,,))
+        _MATH_ADD_UNIT4_STMT(rega,regb_const,5,6,7,8,0,carry_stmt0,carry_stmt1), \
+        _MATH_ADD_UNIT4_STMT(rega,regb_const,5,6,7,8,1,carry_stmt0,carry_stmt1))
+
+#define MATH_ADD_STMT(rega,regb_const) \
+    MATH_ADD_STMT_FULL(rega,regb_const,,printf ("Warning: Overflow!\n"))
