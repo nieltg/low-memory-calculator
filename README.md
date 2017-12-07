@@ -35,6 +35,12 @@ To compile and test:
 ./build.sh
 ```
 
+Create your own `data.txt` or copy sample:
+
+```sh
+cp doc/data.txt .
+```
+
 To run:
 
 ```sh
