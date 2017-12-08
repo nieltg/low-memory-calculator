@@ -1,4 +1,4 @@
-# Naive Calculator
+# Naive Calculator (lmcalc)
 
 Naive calculator, more precisely, a simple calculator with some programming constraints as one of Distributed System Laboratory Assistant selection task.
 
