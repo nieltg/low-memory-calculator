@@ -1,5 +1,7 @@
 # Naive Calculator (lmcalc)
 
+![Alt](doc/screenshot.png)
+
 Naive calculator, more precisely, a simple calculator with some programming constraints as one of Distributed System Laboratory Assistant selection task.
 
 Specified programming constraints:
