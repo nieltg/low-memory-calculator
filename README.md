@@ -58,6 +58,14 @@ Papers, written in Indonesian language:
 - [Spesifikasi Tugas.pdf](doc/paper/Spesifikasi%20Tugas.pdf)
 - [Dokumentasi Arsitektur.pdf](doc/paper/Dokumentasi%20Arsitektur.pdf)
 
+## Contributor
+
+Naive Calculator (lmcalc) is brought to you by [nieltg](https://github.com/nieltg).
+
+## License
+
+[MIT](LICENSE)
+
 ## Additional Resources
 
 - [The C Preprocessor](https://gcc.gnu.org/onlinedocs/cpp/)

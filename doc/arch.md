@@ -7,8 +7,8 @@
 The extended Backus-Naur form (EBNF) of the parser is specified below.
 
 ```ebnf
-eval1 = eval2 {"+" | "-" | "*" | "/" | "%", eval2}
-eval2 = eval3 {"^", eval3}
+eval1 = eval2, {"+" | "-" | "*" | "/" | "%", eval2}
+eval2 = eval3, {"^", eval3}
 eval3 = ("r", number) | number
 
 eval = eval1
@@ -29,7 +29,7 @@ To preserve registers, output of carry bit is represented as sort of "lambda" ex
 - `carry_stmt0` will be executed if the carry bit is off.
 - `carry_stmt1` will be executed if the carry bit is on.
 
-The result is **byte adder** which only uses 1 mutable register and 1 read-only register.
+The result is **addition unit** which only uses 1 mutable register and 1 read-only register.
 
 ### Multiplication
 
@@ -40,7 +40,7 @@ There are 2 operations which will be applied based on each bits in the multiplie
 - **Add by self** if processed the bit is off.
 - **Add by self then with second byte** if the bit is on.
 
-The result is **byte multiplier** which uses 2 mutable register.
+The result is **multiplication unit** which uses 2 mutable registers.
 
 ### Exponentiation
 
@@ -51,7 +51,7 @@ There are 2 operations which will be applied based on each bits in the exponent 
 - **Multiply by self** if processed the bit is off.
 - **Multiply by self then with second byte** if the bit is on.
 
-The result is **byte exponentiation unit** which uses 2 mutable register and 1 temporary register.
+The result is **exponentiation unit** which uses 2 mutable registers and 1 temporary register.
 
 ### Subtraction
 
@@ -64,14 +64,21 @@ Negative Subtrahend = -Subtrahend = (NOT Subtrahend) + 1
 Result = Minuend + Negative Subtrahend
 ```
 
-The result is **subtraction unit** which uses 2 mutable register and 1 temporary register.
+The result is **subtraction unit** which uses 2 mutable registers and 1 temporary register.
 
 ### Division and Modulus
 
-Division and modulus is implemented using long division technique.
+Division and modulus is implemented using long division technique. Divisor is subtracted with dividend, then subtract it again using shifted dividend, and so on.
 
-TODO
+There are 2 operations which will be applied based on subtraction status:
+
+- **Minuend is less than subtrahend,** then subtract, shift dividend and set bit to 1.
+- **Minuend is bigger than subtrahend,** then shift divident and set bit to 0.
+
+The result is **division unit** which uses 2 mutable registers and 2 temporary register.
 
 ### Square Root
 
-TODO
+Square root is implemented using conditionals because the input domain is small enough.
+
+The result is **square root unit** which uses 1 mutable register.
